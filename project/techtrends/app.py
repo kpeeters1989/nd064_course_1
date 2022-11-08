@@ -60,7 +60,7 @@ def healthz():
             mimetype='application/json'
     )
     app.logger.info('healthz request successfull')
-    print('healthz request successfull')
+    #print('healthz request successfull')
     return response
 
 
@@ -72,7 +72,7 @@ def metrics():
             mimetype='application/json'
     )
     app.logger.info('Metric request successfull')
-    print('Metric request successfull')
+    #print('Metric request successfull')
     return response
 
 
@@ -84,18 +84,18 @@ def post(post_id):
     post = get_post(post_id)
     if post is None:
       app.logger.debug('%s , Article ID  %s does not exist!',get_formatted_time(),post_id) 
-      print("%s , Article ID  %s does not exist!" % (get_formatted_time(),post_id))
+      #print("%s , Article ID  %s does not exist!" % (get_formatted_time(),post_id))
       return render_template('404.html'), 404
     else:
       app.logger.debug('%s , Article %s retrieved!',get_formatted_time(),post[2])
-      print("%s , Article %s retrieved!" % (get_formatted_time(),post[2]))
+      #print("%s , Article %s retrieved!" % (get_formatted_time(),post[2]))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
     app.logger.debug('%s , "About Us" page is retrieved!',get_formatted_time())
-    print("%s , \"About Us\" page is retrieved!" % get_formatted_time())
+    #print("%s , \"About Us\" page is retrieved!" % get_formatted_time())
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -114,7 +114,7 @@ def create():
             connection.commit()
             connection.close()
             app.logger.debug('%s , Article %s created!',get_formatted_time(),title)
-            print("%s , Article %s created!" % (get_formatted_time(),title))
+            #print("%s , Article %s created!" % (get_formatted_time(),title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
