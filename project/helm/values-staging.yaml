@@ -8,7 +8,7 @@ service:
   protocol: TCP 
 
 image:
-  repository: techtrends 
+  repository: kpeeters89/techtrends 
   tag: latest
   pullPolicy: IfNotPresent
 
